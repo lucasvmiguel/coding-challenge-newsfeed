@@ -31,18 +31,18 @@ const client = new ApolloClient({
                 merged[offset + i] = incoming[i]
               }
               return merged
-            },
-          },
-        },
-      },
+            }
+          }
+        }
+      }
     }
-  }),
+  })
 })
 
 const theme = {
   colors: {
   }
-};
+}
 
 const GlobalStyle = createGlobalStyle`
   html,
@@ -90,4 +90,4 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
-`;
+`

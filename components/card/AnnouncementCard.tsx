@@ -1,7 +1,7 @@
 import Card, { Icon, Columns, ColumnLeft, ColumnRight } from './Card'
 import Markdown from '../Markdown'
 
-const ICON_URL = "https://avatars.dicebear.com/api/initials/a.svg"
+const ICON_URL = 'https://avatars.dicebear.com/api/initials/a.svg'
 
 export type Announcement = {
   id: number;

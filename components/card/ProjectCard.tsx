@@ -4,8 +4,10 @@ import styled from 'styled-components'
 import Card, { Icon, Columns, ColumnLeft, ColumnRight } from './Card'
 import Markdown from '../Markdown'
 
-type Props = {
-  project: Project;
+type User = {
+  id: number;
+  name: string;
+  avatar_url: string;
 }
 
 export type Project = {
@@ -16,10 +18,8 @@ export type Project = {
   users: User[];
 }
 
-type User = {
-  id: number;
-  name: string;
-  avatar_url: string;
+type Props = {
+  project: Project;
 }
 
 export default function ProjectCard({ project }: Props) {

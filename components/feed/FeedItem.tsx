@@ -1,4 +1,3 @@
-
 import { resolveTypes } from '../../graphql/client/types'
 
 import AnnouncementCard, { Announcement } from '../card/AnnouncementCard'

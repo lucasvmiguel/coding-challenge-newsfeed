@@ -23,12 +23,10 @@ const USER_QUERY = gql`
   }
 `
 
-type QueryData = {
-  user: User;
-}
-
-type QueryVars = {
+type Project = {
   id: number;
+  name: string;
+  icon_url: string;
 }
 
 type User = {
@@ -40,10 +38,12 @@ type User = {
   projects: Project[];
 }
 
-type Project = {
+type QueryData = {
+  user: User;
+}
+
+type QueryVars = {
   id: number;
-  name: string;
-  icon_url: string;
 }
 
 export default function UserPage() {
@@ -53,10 +53,10 @@ export default function UserPage() {
     USER_QUERY,
     {
       skip: !query.id,
-      variables: { id: Number(query.id) },
+      variables: { id: Number(query.id) }
     }
   )
-  const user = data?.user;
+  const user = data?.user
 
   if (!user || loading || error) {
     return null

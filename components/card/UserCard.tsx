@@ -1,5 +1,3 @@
-
-
 import Link from 'next/link'
 import styled from 'styled-components'
 
@@ -8,8 +6,10 @@ import { Fellowship } from '../../graphql/client/__generated__/globalTypes'
 import Card, { Icon, Columns, ColumnLeft, ColumnRight } from './Card'
 import Markdown from '../Markdown'
 
-type Props = {
-  user: User;
+type Project = {
+  id: number;
+  name: string;
+  icon_url: string;
 }
 
 export type User = {
@@ -21,10 +21,8 @@ export type User = {
   projects: Project[];
 }
 
-type Project = {
-  id: number;
-  name: string;
-  icon_url: string;
+type Props = {
+  user: User;
 }
 
 export default function UserCard({ user }: Props) {
@@ -42,7 +40,7 @@ export default function UserCard({ user }: Props) {
             <>
               <h3>Projects:</h3>
               {user.projects.map(p => (
-                <Project key={p.id} project={p} />
+                <ProjectItem key={p.id} project={p} />
               ))}
             </>
           )}
@@ -57,7 +55,7 @@ const Avatar = styled.img`
   border-radius: 10px;
 `
 
-function Project({ project }: { project: Project }) {
+function ProjectItem({ project }: { project: Project }) {
   return (
     <ProjectContainer>
       <ProjectColumnLeft>
