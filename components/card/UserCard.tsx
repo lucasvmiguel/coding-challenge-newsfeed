@@ -1,17 +1,22 @@
+
+
 import Link from 'next/link'
 import styled from 'styled-components'
-import Card from './Card'
-import Markdown from './Markdown'
+
+import { Fellowship } from '../../graphql/client/__generated__/globalTypes'
+
+import Card, { Icon, Columns, ColumnLeft, ColumnRight } from './Card'
+import Markdown from '../Markdown'
 
 type Props = {
   user: User;
 }
 
-type User = {
+export type User = {
   id: number;
   name: string;
   bio: string;
-  fellowship: "fellows" | "angels" | "writers";
+  fellowship: Fellowship;
   avatar_url: string;
   projects: Project[];
 }
@@ -22,12 +27,12 @@ type Project = {
   icon_url: string;
 }
 
-export default function UserCard({user}: Props) {
+export default function UserCard({ user }: Props) {
   return (
     <Card>
       <Columns>
         <ColumnLeft>
-          <Avatar src={user.avatar_url}/>
+          <Avatar src={user.avatar_url} />
         </ColumnLeft>
         <ColumnRight>
           <h2>{user.name}</h2>
@@ -52,34 +57,11 @@ const Avatar = styled.img`
   border-radius: 10px;
 `
 
-const Columns = styled.div`
-  display: flex;
-  flex-direction: row;
-  min-width: 21rem;
-`
-
-const ColumnLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-basis: 7rem;
-  flex-grow: 0;
-  flex-shrink: 0;
-  margin-right: 1.5rem;
-`
-
-const ColumnRight = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 14rem;
-`
-
-function Project({project}: {project: Project}) {
+function Project({ project }: { project: Project }) {
   return (
     <ProjectContainer>
       <ProjectColumnLeft>
-        <ProjectIcon src={project.icon_url} />
+        <Icon src={project.icon_url} />
       </ProjectColumnLeft>
       <ProjectColumnRight>
         <Link href={`/projects/${project.id}`}>
@@ -89,11 +71,6 @@ function Project({project}: {project: Project}) {
     </ProjectContainer>
   )
 }
-
-const ProjectIcon = styled.img`
-  border-radius: 3px;
-  background-color: rgba(0, 0, 0, 0.1);
-`
 
 const ProjectContainer = styled.div`
   display: flex;

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders AnnouncementCard component correctly - snapshot 1`] = `
+<div
+  className="sc-bdfBQB eDCjUP"
+>
+  <div
+    className="sc-dlfnuX iOZAXF"
+  >
+    <div
+      className="sc-hKgJUU jkblDv"
+    >
+      <img
+        className="sc-gsTEea iRQMQw"
+        src="https://avatars.dicebear.com/api/initials/a.svg"
+      />
+    </div>
+    <div
+      className="sc-eCstlR evEecB"
+    >
+      <h2>
+        title testing
+      </h2>
+      <div
+        className="sc-jSgvzq"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p>body testing</p>
+",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;

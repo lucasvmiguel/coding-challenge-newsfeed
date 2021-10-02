@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders NewsFeed component correctly - snapshot 1`] = `
+<div>
+  <ul>
+    <li
+      className="sc-dQoVA eBdjko"
+    >
+      Announcement
+       - 
+      2
+       - 
+      01-01-2021
+      <div
+        className="sc-bdfBQB eDCjUP"
+      >
+        <div
+          className="sc-dlfnuX iOZAXF"
+        >
+          <div
+            className="sc-hKgJUU jkblDv"
+          >
+            <img
+              className="sc-gsTEea iRQMQw"
+              src="https://avatars.dicebear.com/api/initials/a.svg"
+            />
+          </div>
+          <div
+            className="sc-eCstlR evEecB"
+          >
+            <h2>
+              title testing
+            </h2>
+            <div
+              className="sc-jSgvzq"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<p>body testing</p>
+",
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      className="sc-dQoVA eBdjko"
+    >
+      User
+       - 
+      3
+       - 
+      01-01-2021
+      <div
+        className="sc-bdfBQB eDCjUP"
+      >
+        <div
+          className="sc-dlfnuX iOZAXF"
+        >
+          <div
+            className="sc-hKgJUU jkblDv"
+          >
+            <img
+              className="sc-gKseQn hvAGSQ"
+              src="icon.svg"
+            />
+          </div>
+          <div
+            className="sc-eCstlR evEecB"
+          >
+            <h2>
+              name testing
+            </h2>
+            <p>
+              Fellowship: 
+              founders
+            </p>
+            <div
+              className="sc-jSgvzq"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<p>desc testing</p>
+",
+                }
+              }
+            />
+            <h3>
+              Projects:
+            </h3>
+            <div
+              className="sc-iBPTik ddGxJq"
+            >
+              <div
+                className="sc-fubCzh kGMoIv"
+              >
+                <img
+                  className="sc-gsTEea iRQMQw"
+                  src="icon2.svg"
+                />
+              </div>
+              <div
+                className="sc-pGacB dXoMBx"
+              >
+                <a
+                  href="/projects/2"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  user testing
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li
+      className="sc-dQoVA eBdjko"
+    >
+      Project
+       - 
+      1
+       - 
+      01-01-2021
+      <div
+        className="sc-bdfBQB eDCjUP"
+      >
+        <div
+          className="sc-dlfnuX iOZAXF"
+        >
+          <div
+            className="sc-hKgJUU jkblDv"
+          >
+            <img
+              className="sc-gsTEea iRQMQw"
+              src="icon.svg"
+            />
+          </div>
+          <div
+            className="sc-eCstlR evEecB"
+          >
+            <h2>
+              name testing
+            </h2>
+            <div
+              className="sc-jSgvzq"
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<p>desc testing</p>
+",
+                }
+              }
+            />
+            <h3>
+              Participants:
+            </h3>
+            <div
+              className="sc-kEjbQP czxUPI"
+            >
+              <div
+                className="sc-iqHYmW fovqHA"
+              >
+                <img
+                  className="sc-jrAFXE dcmrNt"
+                  src="icon2.svg"
+                />
+              </div>
+              <div
+                className="sc-crrszt iBTWmQ"
+              >
+                <a
+                  href="/users/2"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  user testing
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;

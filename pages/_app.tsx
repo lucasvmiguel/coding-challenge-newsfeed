@@ -1,5 +1,5 @@
-import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client'
-import {createGlobalStyle, ThemeProvider} from 'styled-components'
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import type { AppProps } from 'next/app'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
@@ -17,7 +17,26 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
 const client = new ApolloClient({
   uri: '/api/graphql',
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          feed: {
+            keyArgs: [],
+            // REFERENCE: https://www.apollographql.com/docs/react/pagination/core-api/#improving-the-merge-function
+            merge: (existing, incoming, { args }) => {
+              const offset = args?.offset || 0
+              const merged = existing ? existing.slice(0) : []
+              for (let i = 0; i < incoming.length; ++i) {
+                merged[offset + i] = incoming[i]
+              }
+              return merged
+            },
+          },
+        },
+      },
+    }
+  }),
 })
 
 const theme = {
