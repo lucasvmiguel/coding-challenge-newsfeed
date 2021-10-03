@@ -36,6 +36,7 @@ jobs:
           else
               echo Branch is clean.
           fi
+          kill -9 $(lsof -i :3000)
       - run: npm run lint
       - run: npm test
       - name: Cypress run
