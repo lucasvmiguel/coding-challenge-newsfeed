@@ -6,6 +6,8 @@ import { user, userVariables } from 'graphql/client/__generated__/user'
 import Layout from 'components/Layout'
 import UserCard from 'components/card/UserCard'
 import { USER_QUERY } from 'graphql/client/user'
+import ErrorBanner from 'components/utils/ErrorBanner'
+import Loading from 'components/utils/Loading'
 
 export default function UserPage() {
   const { query } = useRouter()
@@ -19,13 +21,11 @@ export default function UserPage() {
   )
   const user = data?.user
 
-  if (!user || loading || error) {
-    return null
-  }
-
   return (
     <Layout>
-      <UserCard user={user} />
+      {loading && <Loading />}
+      {error && <ErrorBanner message="There was something wrong" />}
+      {user && <UserCard user={user} />}
     </Layout>
   )
 }

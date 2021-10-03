@@ -4,6 +4,7 @@ exports[`renders ErrorBanner component correctly - snapshot 1`] = `
 <div
   className="sc-bdfBQB bfHpLq"
   color="white"
+  data-test="error-banner"
 >
   testing
 </div>

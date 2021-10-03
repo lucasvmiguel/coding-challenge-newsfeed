@@ -8,7 +8,8 @@
     "next",
     "next/core-web-vitals",
     "plugin:react/recommended",
-    "standard"
+    "standard",
+    "plugin:cypress/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -20,7 +21,8 @@
   },
   "plugins": [
     "react",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "cypress"
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",

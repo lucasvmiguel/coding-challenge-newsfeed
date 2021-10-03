@@ -33,7 +33,7 @@ export default function UserCard({ user }: Props) {
           <Avatar src={user.avatar_url} />
         </ColumnLeft>
         <ColumnRight>
-          <h2>{user.name}</h2>
+          <h2 data-test="user-card-name">{user.name}</h2>
           <p>Fellowship: {user.fellowship}</p>
           <Markdown>{user.bio}</Markdown>
           {!!user.projects.length && (

@@ -6,7 +6,7 @@ type Props = {
 
 export default function ErrorBanner({ message }: Props) {
   return (
-    <Banner bgColor="#bc1a1a" color="white">
+    <Banner bgColor="#bc1a1a" color="white" data-test="error-banner">
       {message}
     </Banner>
   )

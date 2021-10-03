@@ -6,6 +6,8 @@ import { PROJECT_QUERY } from 'graphql/client/project'
 
 import Layout from 'components/Layout'
 import ProjectCard from 'components/card/ProjectCard'
+import ErrorBanner from 'components/utils/ErrorBanner'
+import Loading from 'components/utils/Loading'
 
 export default function ProjectPage() {
   const { query } = useRouter()
@@ -19,13 +21,11 @@ export default function ProjectPage() {
   )
   const project = data?.project
 
-  if (!project || loading || error) {
-    return null
-  }
-
   return (
     <Layout>
-      <ProjectCard project={project} />
+      {loading && <Loading />}
+      {error && <ErrorBanner message="There was something wrong" />}
+      {project && <ProjectCard project={project} />}
     </Layout>
   )
 }

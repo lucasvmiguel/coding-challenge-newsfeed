@@ -23,7 +23,9 @@ exports[`renders NewsFeed component correctly - snapshot 1`] = `
           <div
             className="sc-eCstlR evEecB"
           >
-            <h2>
+            <h2
+              data-test="announcement-card-title"
+            >
               title testing
             </h2>
             <div
@@ -59,7 +61,9 @@ exports[`renders NewsFeed component correctly - snapshot 1`] = `
           <div
             className="sc-eCstlR evEecB"
           >
-            <h2>
+            <h2
+              data-test="user-card-name"
+            >
               name testing
             </h2>
             <p>
@@ -125,7 +129,9 @@ exports[`renders NewsFeed component correctly - snapshot 1`] = `
           <div
             className="sc-eCstlR evEecB"
           >
-            <h2>
+            <h2
+              data-test="project-card-name"
+            >
               name testing
             </h2>
             <div

@@ -21,7 +21,7 @@ export default function AnnouncementCard({ announcement }: Props) {
           <Icon src={ICON_URL} />
         </ColumnLeft>
         <ColumnRight>
-          <h2>{announcement.title}</h2>
+          <h2 data-test="announcement-card-title">{announcement.title}</h2>
           <Markdown>{announcement.body}</Markdown>
         </ColumnRight>
       </Columns>

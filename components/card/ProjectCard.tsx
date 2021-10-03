@@ -30,7 +30,7 @@ export default function ProjectCard({ project }: Props) {
           <Icon src={project.icon_url} />
         </ColumnLeft>
         <ColumnRight>
-          <h2>{project.name}</h2>
+          <h2 data-test="project-card-name">{project.name}</h2>
           <Markdown>{project.description}</Markdown>
           {!!project.users.length && (
             <>

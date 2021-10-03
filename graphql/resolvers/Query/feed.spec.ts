@@ -9,12 +9,12 @@ const LIMIT_AND_OFFSET = 5;
   Fellowship.Writers,
   Fellowship.Angels,
   "invalid",
-].forEach(role => {
-  describe(`fetches feed as ${role}`, () => {
+].forEach(userType => {
+  describe(`fetches feed as ${userType}`, () => {
     it('fetches feed', async () => {
       const res = await server.executeOperation({
         query: FEED_QUERY,
-        variables: { user_type: role, limit: LIMIT_AND_OFFSET }
+        variables: { user_type: userType, limit: LIMIT_AND_OFFSET }
       });
       expect(res).toMatchSnapshot();
     })
@@ -22,7 +22,7 @@ const LIMIT_AND_OFFSET = 5;
     it('fetches feed with offset', async () => {
       const res = await server.executeOperation({
         query: FEED_QUERY,
-        variables: { user_type: role, limit: LIMIT_AND_OFFSET, offset: LIMIT_AND_OFFSET }
+        variables: { user_type: userType, limit: LIMIT_AND_OFFSET, offset: LIMIT_AND_OFFSET }
       });
       expect(res).toMatchSnapshot();
     })

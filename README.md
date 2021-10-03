@@ -22,17 +22,28 @@ yarn dev
 * Apollo server
 * Apollo client
 * React
+* Cypress
+* Jest
 
 ## Testing
 
 ### How to run unit and integration tests
+
+Jest is Javascript testing framework for running all unit and integration tests.
+
+Run the following command to see the project's tests:
 ```
 npm test
 ```
 
 ### How to run E2E tests
 
-TODO
+Cypress is used to run E2E tests.
+
+To see all E2E tests, run the following command:
+```
+node_modules/.bin/cypress open
+```
 
 ## Development
 
@@ -55,3 +66,7 @@ PAGINATION_MAX_LIMIT=20
 *Modify this file as you like*
 
 Reference: https://nextjs.org/docs/basic-features/environment-variables
+
+## Continuous integration (CI)
+
+All continuos integration runs on Github CI. You can check the whole pipeline on the folder `.github`
