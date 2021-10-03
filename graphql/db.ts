@@ -9,8 +9,8 @@ class AsyncDatabase {
   }
 
   async getOne<T = any>(sql: string, params: any[] = []): Promise<T | undefined> {
-    const rows = await this.getAll(sql, params);
-    return rows[0];
+    const rows = await this.getAll(sql, params)
+    return rows[0]
   }
 
   async getAll<T = any>(sql: string, params: any[] = []): Promise<T[]> {
@@ -30,9 +30,9 @@ class AsyncDatabase {
 export default new AsyncDatabase(path.join(process.cwd(), 'db.sqlite'))
 
 export enum Fellowship {
-  Founders = "founders",
-  Angels = "angels",
-  Writers = "writers"
+  Founders = 'founders',
+  Angels = 'angels',
+  Writers = 'writers'
 }
 
 export type UserRow = {
@@ -61,7 +61,7 @@ export type UserProjectRow = {
 
 export type AnnouncementRow = {
   id: number;
-  fellowship: Fellowship | "all";
+  fellowship: Fellowship | 'all';
   title: string;
   body: string;
   created_ts: Date;

@@ -25,6 +25,8 @@
     "cypress"
   ],
   "rules": {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
     "react/react-in-jsx-scope": "off",
     "space-before-function-paren": "off",
     "camelcase": "off"

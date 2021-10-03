@@ -1,8 +1,7 @@
 import { ApolloServer, gql } from 'apollo-server-micro'
 
-import { resolveTypes } from './client/types';
+import { resolveTypes } from './client/types'
 import * as resolvers from './resolvers'
-
 
 const typeDefs = gql`
   enum Fellowship {
@@ -47,28 +46,31 @@ const typeDefs = gql`
     user(id: Int!): User!
     feed(user_type: Fellowship!, limit: Int, offset: Int): [FeedItem!]!
   }
-`;
+`
 
 export const server = new ApolloServer({
   typeDefs,
   resolvers: {
     ...resolvers,
     FeedItem: {
-      __resolveType(obj: any, context: any, info: any) {
+      __resolveType(obj: any, context: any, info: any) { // eslint-disable-line @typescript-eslint/no-unused-vars
+        // only User has bio
         if (obj.bio !== null) {
-          return resolveTypes.User;
+          return resolveTypes.User
         }
 
+        // only Announcement has body
         if (obj.body !== null) {
-          return resolveTypes.Announcement;
+          return resolveTypes.Announcement
         }
 
+        // only Project has description
         if (obj.description !== null) {
-          return resolveTypes.Project;
+          return resolveTypes.Project
         }
 
-        return null;
-      },
-    },
+        return null
+      }
+    }
   }
 })

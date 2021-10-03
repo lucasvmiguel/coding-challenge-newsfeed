@@ -2,28 +2,18 @@ Code challenge
 
 ## Install
 
+To install all required packages to run the application:
 ```
 yarn install
 ```
 
 ## Getting Started
 
-First, run the development server:
+Run the development server:
 
 ```bash
 yarn dev
 ```
-
-## Stack
-
-* Next.js
-* TypeScript
-* Sqlite3
-* Apollo server
-* Apollo client
-* React
-* Cypress
-* Jest
 
 ## Testing
 
@@ -54,6 +44,8 @@ Run the following command to generate the typescript types from the GraphQL sche
 npm run graphql:schema:generate
 ```
 
+*CI will fail in case the typescript types are not in sync with the GraphQL schema*
+
 ## Configuration
 
 
@@ -69,4 +61,27 @@ Reference: https://nextjs.org/docs/basic-features/environment-variables
 
 ## Continuous integration (CI)
 
-All continuos integration runs on Github CI. You can check the whole pipeline on the folder `.github`
+All continuous integration runs on Github CI. You can check the whole pipeline in the folder `.github`
+
+### Project structure
+### Tech Stack
+
+* Next.js
+* TypeScript
+* Sqlite3
+* Apollo server
+* Apollo client
+* React
+* Cypress
+* Jest
+
+### Folder structure:
+
+* `components/` — reusable React components;
+* `pages/` — the usual Next.js page structure;
+* `graphql/` — GraphQL server, schema, resolvers, DB connection;
+* `scripts/` — contains the SQL script used for creating and populating the tables in db.sqlite.
+* `cypress/` — contains all E2E tests.
+* `husky/` — git hooks.
+* `.github/` — CI pipeline.
+* `test/` — test utils.

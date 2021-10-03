@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint && eslint graphql test",
     "test": "jest",
     "graphql:schema:cleanup": "rm -rf graphql/client/__generated__",
     "graphql:schema:download": "npx apollo service:download --endpoint=http://localhost:3000/api/graphql graphql-schema.json",

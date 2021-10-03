@@ -17,7 +17,7 @@ it('should return correct limit', () => {
     {
       param: 2.4,
       expected: 10
-    },
+    }
   ]
 
   tests.forEach(test => {
@@ -38,7 +38,7 @@ it('should return correct offset', () => {
     {
       param: 2.4,
       expected: 0
-    },
+    }
   ]
 
   tests.forEach(test => {
