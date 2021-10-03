@@ -1,55 +1,16 @@
 import { useRouter } from 'next/router'
-import { useQuery, gql } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 
-import { Fellowship } from '../../graphql/client/__generated__/globalTypes'
+import { user, userVariables } from 'graphql/client/__generated__/user'
 
 import Layout from 'components/Layout'
 import UserCard from 'components/card/UserCard'
-
-const USER_QUERY = gql`
-  query user($id: Int!) {
-    user(id: $id) {
-      id
-      name
-      bio
-      fellowship
-      avatar_url
-      projects {
-        id
-        name
-        icon_url
-      }
-    }
-  }
-`
-
-type Project = {
-  id: number;
-  name: string;
-  icon_url: string;
-}
-
-type User = {
-  id: number;
-  name: string;
-  bio: string;
-  fellowship: Fellowship;
-  avatar_url: string;
-  projects: Project[];
-}
-
-type QueryData = {
-  user: User;
-}
-
-type QueryVars = {
-  id: number;
-}
+import { USER_QUERY } from 'graphql/client/user'
 
 export default function UserPage() {
   const { query } = useRouter()
 
-  const { data, error, loading } = useQuery<QueryData, QueryVars>(
+  const { data, error, loading } = useQuery<user, userVariables>(
     USER_QUERY,
     {
       skip: !query.id,

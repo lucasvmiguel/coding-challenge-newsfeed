@@ -5,15 +5,20 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import { useQuery } from '@apollo/client'
 
 import { FEED_QUERY } from 'graphql/client/feed'
-import { Feed } from '../graphql/client/__generated__/Feed'
+import { Feed, FeedVariables } from 'graphql/client/__generated__/Feed'
+import { Fellowship } from 'graphql/client/__generated__/globalTypes'
 
 import Layout from 'components/Layout'
 import NewsFeed from 'components/feed/NewsFeed'
+import RoleChanger from 'components/utils/UserTypeChanger'
+import Loading from 'components/utils/Loading'
+import ErrorBanner from 'components/utils/ErrorBanner'
 
 export default function Home() {
   const router = useRouter()
-  const { user_type } = router.query
-  const { error, data, loading, fetchMore } = useQuery<Feed>(FEED_QUERY, {
+  const user_type = router.query.user_type as Fellowship
+
+  const { error, data, loading, fetchMore } = useQuery<Feed, FeedVariables>(FEED_QUERY, {
     variables: { user_type }
   })
 
@@ -24,9 +29,10 @@ export default function Home() {
       <Head>
         <title>On Deck Newsfeed</title>
       </Head>
-      <h1>Hello there! - {items.length}</h1>
-      {error && <p>error</p>}
-      {loading && <p>Loading...</p>}
+      <RoleChanger />
+      <h1>Hello there!</h1>
+      {error && <ErrorBanner message="Failed to load feed, you may have to choose a valid user type above" />}
+      {loading && <Loading />}
 
       <InfiniteScroll
         dataLength={items.length}

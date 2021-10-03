@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fetches user 1`] = `
+Object {
+  "data": Object {
+    "user": Object {
+      "avatar_url": "https://avatars.dicebear.com/api/avataaars/a1.svg",
+      "bio": "I'm a founder, angel investor, ex-google team member passionate about startups. I also love traveling, the digital nomad lifestyle and anything outdoors.
+
+I'm currently exploring several ideas, excited to launch a new concept or join an existing team.",
+      "fellowship": "founders",
+      "id": 1,
+      "name": "Dennis Pearson",
+      "projects": Array [
+        Object {
+          "icon_url": "https://avatars.dicebear.com/api/jdenticon/a1.svg",
+          "id": 1,
+          "name": "Seam",
+        },
+      ],
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

@@ -11,8 +11,7 @@ export default function NewsFeed({ items }: Props) {
     <div>
       <ul>
         {items.map(item => (
-          <ListItem key={item.id}>
-            {item.__typename} - {item.id} - {item.created_ts}
+          <ListItem key={`${item.id}-${item.__typename}`}>
             <FeedItem item={item} />
           </ListItem>
         ))}

@@ -4,7 +4,7 @@ import AnnouncementCard, { Announcement } from '../card/AnnouncementCard'
 import UserCard, { User } from '../card/UserCard'
 import ProjectCard, { Project } from '../card/ProjectCard'
 
-export type Item = (Announcement | User | Project) & { __typename: string, created_ts: string }
+export type Item = (Announcement | User | Project) & { __typename: string }
 
 type Props = {
   item: Item;

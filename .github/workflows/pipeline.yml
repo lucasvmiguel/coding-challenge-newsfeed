@@ -26,6 +26,8 @@ jobs:
       - run: yarn install --frozen-lockfile
       - name: Check uncommitted changes
         run: |
+          yarn dev &
+          sleep 30
           npm run graphql:schema:generate
           clean=$(git status | grep "nothing to commit")
           if [ -z "$clean" ]; then
