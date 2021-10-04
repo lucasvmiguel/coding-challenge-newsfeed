@@ -1,5 +1,5 @@
 import db, { UserRow, AnnouncementRow, ProjectRow, Fellowship } from '../../db'
-import { limitQueryParam, offsetQueryParam } from '../../pagination'
+import { limitQueryParam, offsetQueryParam } from '../../utils/pagination'
 
 const ANNOUNCEMENTS_QUERY = `
   SELECT a.id, a.title, NULL as name, a.body, NULL as bio, NULL as description, a.created_ts, a.fellowship, NULL as avatar_url, NULL as icon_url FROM announcements a
