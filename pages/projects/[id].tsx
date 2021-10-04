@@ -1,65 +1,31 @@
-import {useRouter} from 'next/router'
-import {useQuery, gql} from '@apollo/client'
+import { useRouter } from 'next/router'
+import { useQuery } from '@apollo/client'
+
+import { project, projectVariables } from 'graphql/client/__generated__/project'
+import { PROJECT_QUERY } from 'graphql/client/project'
+
 import Layout from 'components/Layout'
-import ProjectCard from 'components/ProjectCard'
-
-const PROJECT_QUERY = gql`
-  query project($id: Int!) {
-    project(id: $id) {
-      id
-      name
-      description
-      icon_url
-      users {
-        id
-        name
-        avatar_url
-      }
-    }
-  }
-`
-
-type QueryData = {
-  project: Project;
-}
-
-type QueryVars = {
-  id: number;
-}
-
-type Project = {
-  id: number;
-  name: string;
-  description: string;
-  icon_url: string;
-  users: User[];
-}
-
-type User = {
-  id: number;
-  name: string;
-  avatar_url: string;
-}
+import ProjectCard from 'components/card/ProjectCard'
+import ErrorBanner from 'components/banner/ErrorBanner'
+import Loading from 'components/utils/Loading'
 
 export default function ProjectPage() {
-  const {query} = useRouter()
+  const { query } = useRouter()
 
-  const {data, error, loading} = useQuery<QueryData, QueryVars>(
+  const { data, error, loading } = useQuery<project, projectVariables>(
     PROJECT_QUERY,
     {
       skip: !query.id,
-      variables: {id: Number(query.id)},
+      variables: { id: Number(query.id) }
     }
   )
-  const project = data?.project;
-
-  if (!project || loading || error) {
-    return null
-  }
+  const project = data?.project
 
   return (
     <Layout>
-      <ProjectCard project={project} />
+      {loading && <Loading />}
+      {error && <ErrorBanner message="There was something wrong" />}
+      {project && <ProjectCard project={project} />}
     </Layout>
   )
 }

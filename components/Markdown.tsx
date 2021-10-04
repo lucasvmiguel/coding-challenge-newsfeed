@@ -5,10 +5,10 @@ type Props = {
   children: string;
 }
 
-export default function Markdown({children}: Props) {
+export default function Markdown({ children }: Props) {
   const __html = marked(children)
   return (
-    <MarkdownContainer dangerouslySetInnerHTML={{__html}} />
+    <MarkdownContainer dangerouslySetInnerHTML={{ __html }} />
   )
 }
 

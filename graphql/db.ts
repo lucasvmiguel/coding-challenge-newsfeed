@@ -1,5 +1,5 @@
 import path from 'path'
-import {Database} from 'sqlite3'
+import { Database } from 'sqlite3'
 
 class AsyncDatabase {
   db: Database;
@@ -9,8 +9,8 @@ class AsyncDatabase {
   }
 
   async getOne<T = any>(sql: string, params: any[] = []): Promise<T | undefined> {
-    const rows = await this.getAll(sql, params);
-    return rows[0];
+    const rows = await this.getAll(sql, params)
+    return rows[0]
   }
 
   async getAll<T = any>(sql: string, params: any[] = []): Promise<T[]> {
@@ -29,12 +29,18 @@ class AsyncDatabase {
 
 export default new AsyncDatabase(path.join(process.cwd(), 'db.sqlite'))
 
+export enum Fellowship {
+  Founders = 'founders',
+  Angels = 'angels',
+  Writers = 'writers'
+}
+
 export type UserRow = {
   id: number;
   name: string;
   bio: string;
   avatar_url: string;
-  fellowship: "founders" | "angels" | "writers";
+  fellowship: Fellowship;
   created_ts: Date;
   updated_ts: Date;
 }
@@ -55,7 +61,7 @@ export type UserProjectRow = {
 
 export type AnnouncementRow = {
   id: number;
-  fellowship: "founders" | "angels" | "writers" | "all";
+  fellowship: Fellowship | 'all';
   title: string;
   body: string;
   created_ts: Date;

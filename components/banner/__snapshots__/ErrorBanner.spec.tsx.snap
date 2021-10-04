@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders ErrorBanner component correctly - snapshot 1`] = `
+<div
+  className="sc-bdfBQB bdyvHb"
+  color="white"
+  data-test="error-banner"
+>
+  testing
+</div>
+`;

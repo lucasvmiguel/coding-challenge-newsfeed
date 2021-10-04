@@ -1,20 +1,10 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import Card from './Card'
-import Markdown from './Markdown'
 
-type Props = {
-  user: User;
-}
+import { Fellowship } from '../../graphql/client/__generated__/globalTypes'
 
-type User = {
-  id: number;
-  name: string;
-  bio: string;
-  fellowship: "fellows" | "angels" | "writers";
-  avatar_url: string;
-  projects: Project[];
-}
+import Card, { Icon, Columns, ColumnLeft, ColumnRight } from './Card'
+import Markdown from '../Markdown'
 
 type Project = {
   id: number;
@@ -22,22 +12,35 @@ type Project = {
   icon_url: string;
 }
 
-export default function UserCard({user}: Props) {
+export type User = {
+  id: number;
+  name: string;
+  bio: string;
+  fellowship: Fellowship;
+  avatar_url: string;
+  projects: Project[];
+}
+
+type Props = {
+  user: User;
+}
+
+export default function UserCard({ user }: Props) {
   return (
     <Card>
       <Columns>
         <ColumnLeft>
-          <Avatar src={user.avatar_url}/>
+          <Avatar src={user.avatar_url} />
         </ColumnLeft>
         <ColumnRight>
-          <h2>{user.name}</h2>
+          <h2 data-test="user-card-name">{user.name}</h2>
           <p>Fellowship: {user.fellowship}</p>
           <Markdown>{user.bio}</Markdown>
           {!!user.projects.length && (
             <>
               <h3>Projects:</h3>
               {user.projects.map(p => (
-                <Project key={p.id} project={p} />
+                <ProjectItem key={p.id} project={p} />
               ))}
             </>
           )}
@@ -52,34 +55,11 @@ const Avatar = styled.img`
   border-radius: 10px;
 `
 
-const Columns = styled.div`
-  display: flex;
-  flex-direction: row;
-  min-width: 21rem;
-`
-
-const ColumnLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-basis: 7rem;
-  flex-grow: 0;
-  flex-shrink: 0;
-  margin-right: 1.5rem;
-`
-
-const ColumnRight = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 14rem;
-`
-
-function Project({project}: {project: Project}) {
+function ProjectItem({ project }: { project: Project }) {
   return (
     <ProjectContainer>
       <ProjectColumnLeft>
-        <ProjectIcon src={project.icon_url} />
+        <Icon src={project.icon_url} />
       </ProjectColumnLeft>
       <ProjectColumnRight>
         <Link href={`/projects/${project.id}`}>
@@ -89,11 +69,6 @@ function Project({project}: {project: Project}) {
     </ProjectContainer>
   )
 }
-
-const ProjectIcon = styled.img`
-  border-radius: 3px;
-  background-color: rgba(0, 0, 0, 0.1);
-`
 
 const ProjectContainer = styled.div`
   display: flex;

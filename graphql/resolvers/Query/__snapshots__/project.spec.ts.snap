@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fetches project 1`] = `
+Object {
+  "data": Object {
+    "project": Object {
+      "description": "An API for homes and buildings, with a hardware hub meant to help developers build apps that can do things like unlock doors, summon elevators, etc. from different device vendors. Currently in 5 pilots.",
+      "icon_url": "https://avatars.dicebear.com/api/jdenticon/a1.svg",
+      "id": 1,
+      "name": "Seam",
+      "users": Array [
+        Object {
+          "avatar_url": "https://avatars.dicebear.com/api/avataaars/a1.svg",
+          "id": 1,
+          "name": "Dennis Pearson",
+        },
+      ],
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
