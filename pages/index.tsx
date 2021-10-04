@@ -11,18 +11,20 @@ import { Fellowship } from 'graphql/client/__generated__/globalTypes'
 import Layout from 'components/Layout'
 import NewsFeed from 'components/feed/NewsFeed'
 import RoleChanger from 'components/utils/UserTypeChanger'
+import ErrorBanner from 'components/banner/ErrorBanner'
 import Loading from 'components/utils/Loading'
-import ErrorBanner from 'components/utils/ErrorBanner'
 
 export default function Home() {
   const router = useRouter()
   const user_type = router.query.user_type as Fellowship
 
   const { error, data, loading, fetchMore } = useQuery<Feed, FeedVariables>(FEED_QUERY, {
-    variables: { user_type }
+    variables: { user_type },
+    skip: !user_type
   })
 
   const items = data?.feed || []
+  const showError = error || (!user_type && router.isReady)
 
   return (
     <Layout>
@@ -31,17 +33,21 @@ export default function Home() {
       </Head>
       <RoleChanger />
       <h1>Hello there!</h1>
-      {error && <ErrorBanner message="Failed to load feed, you may have to choose a valid user type above" />}
-      {loading && <Loading />}
+      <div>
+        {showError && <ErrorBanner message="Failed to load feed, you may have to choose a valid user type above" />}
+        {loading && <Loading />}
+      </div>
 
-      <InfiniteScroll
-        dataLength={items.length}
-        next={() => fetchMore({ variables: { user_type, offset: items.length } })}
-        hasMore={true}
-        loader={null}
-      >
-        {!loading && <NewsFeed items={items} />}
-      </InfiniteScroll >
+      <div>
+        <InfiniteScroll
+          dataLength={items.length}
+          next={() => fetchMore({ variables: { user_type, offset: items.length } })}
+          hasMore={true}
+          loader={null}
+        >
+          {!loading && <NewsFeed items={items} />}
+        </InfiniteScroll >
+      </div>
     </Layout>
   )
 }

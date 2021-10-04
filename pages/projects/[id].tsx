@@ -6,7 +6,7 @@ import { PROJECT_QUERY } from 'graphql/client/project'
 
 import Layout from 'components/Layout'
 import ProjectCard from 'components/card/ProjectCard'
-import ErrorBanner from 'components/utils/ErrorBanner'
+import ErrorBanner from 'components/banner/ErrorBanner'
 import Loading from 'components/utils/Loading'
 
 export default function ProjectPage() {

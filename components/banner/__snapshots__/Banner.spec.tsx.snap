@@ -2,7 +2,7 @@
 
 exports[`renders Banner component correctly - snapshot 1`] = `
 <div
-  className="sc-bdfBQB dwcRfT"
+  className="sc-bdfBQB kDCfGt"
   color="white"
 />
 `;

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 type Props = {
-  color: string;
+  color: string
   bgColor: string
 }
 
@@ -10,7 +10,7 @@ const Banner = styled.div<Props>`
   text-align: center;
   background: ${props => props.bgColor};
   color: ${props => props.color};
-  font-size: 16px;
+  font-size: 14px;
 `
 
 export default Banner

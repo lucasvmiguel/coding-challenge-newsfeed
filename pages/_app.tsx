@@ -17,13 +17,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
 const client = new ApolloClient({
   uri: '/api/graphql',
+  // REFERENCE: https://www.apollographql.com/docs/react/pagination/core-api/#improving-the-merge-function
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
         fields: {
           feed: {
             keyArgs: [],
-            // REFERENCE: https://www.apollographql.com/docs/react/pagination/core-api/#improving-the-merge-function
             merge: (existing, incoming, { args }) => {
               const offset = args?.offset || 0
               const merged = existing ? existing.slice(0) : []

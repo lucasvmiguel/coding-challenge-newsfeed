@@ -2,11 +2,11 @@ import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 
 import { user, userVariables } from 'graphql/client/__generated__/user'
+import { USER_QUERY } from 'graphql/client/user'
 
 import Layout from 'components/Layout'
 import UserCard from 'components/card/UserCard'
-import { USER_QUERY } from 'graphql/client/user'
-import ErrorBanner from 'components/utils/ErrorBanner'
+import ErrorBanner from 'components/banner/ErrorBanner'
 import Loading from 'components/utils/Loading'
 
 export default function UserPage() {
