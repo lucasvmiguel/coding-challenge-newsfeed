@@ -35,6 +35,10 @@ export enum Fellowship {
   Writers = 'writers'
 }
 
+export enum ExtraFellowship {
+  All = 'all'
+}
+
 export type UserRow = {
   id: number;
   name: string;
@@ -61,7 +65,7 @@ export type UserProjectRow = {
 
 export type AnnouncementRow = {
   id: number;
-  fellowship: Fellowship | 'all';
+  fellowship: Fellowship | ExtraFellowship;
   title: string;
   body: string;
   created_ts: Date;

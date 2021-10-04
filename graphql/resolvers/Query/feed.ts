@@ -1,4 +1,4 @@
-import db, { UserRow, AnnouncementRow, ProjectRow, Fellowship } from '../../db'
+import db, { UserRow, AnnouncementRow, ProjectRow, Fellowship, ExtraFellowship } from '../../db'
 import { limitQueryParam, offsetQueryParam } from '../../utils/pagination'
 
 const ANNOUNCEMENTS_QUERY = `
@@ -46,10 +46,10 @@ export default async function feed(parent: unknown, { user_type, limit, offset }
 const writersQuery = (limitQP: number, offsetQP: number) => {
   return db.getAll(`
     ${ANNOUNCEMENTS_QUERY}
-    WHERE a.fellowship == "writers" OR a.fellowship == "all"
+    WHERE a.fellowship == "${Fellowship.Writers}" OR a.fellowship == "${ExtraFellowship.All}"
     ${MERGE_QUERIES}
     ${USERS_QUERY}
-    WHERE u.fellowship == "writers"
+    WHERE u.fellowship == "${Fellowship.Writers}"
     ${ORDER_LIMIT_OFFSET}
   `,
   [limitQP, offsetQP]
@@ -59,10 +59,10 @@ const writersQuery = (limitQP: number, offsetQP: number) => {
 const foundersQuery = (limitQP: number, offsetQP: number) => {
   return db.getAll(`
     ${ANNOUNCEMENTS_QUERY}
-    WHERE a.fellowship == "founders" OR a.fellowship == "all"
+    WHERE a.fellowship == "${Fellowship.Founders}" OR a.fellowship == "${ExtraFellowship.All}"
     ${MERGE_QUERIES}
     ${USERS_QUERY}
-    WHERE u.fellowship == "founders" OR u.fellowship == "angels"
+    WHERE u.fellowship == "${Fellowship.Founders}" OR u.fellowship == "${Fellowship.Angels}"
     ${MERGE_QUERIES}
     ${PROJECTS_QUERY}
     ${ORDER_LIMIT_OFFSET}
@@ -74,10 +74,10 @@ const foundersQuery = (limitQP: number, offsetQP: number) => {
 const angelsQuery = (limitQP: number, offsetQP: number) => {
   return db.getAll(`
     ${ANNOUNCEMENTS_QUERY}
-    WHERE a.fellowship == "angels" OR a.fellowship == "all"
+    WHERE a.fellowship == "${Fellowship.Angels}" OR a.fellowship == "${ExtraFellowship.All}"
     ${MERGE_QUERIES}
     ${USERS_QUERY}
-    WHERE u.fellowship == "founders" OR u.fellowship == "angels"
+    WHERE u.fellowship == "${Fellowship.Founders}" OR u.fellowship == "${Fellowship.Angels}"
     ${MERGE_QUERIES}
     ${PROJECTS_QUERY}
     ${ORDER_LIMIT_OFFSET}
